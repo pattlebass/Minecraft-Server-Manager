@@ -16,7 +16,15 @@ _global_script_class_icons={
 [application]
 
 config/name="Minecraft Server Manager"
-config/icon="res://icon.png"
+run/main_scene="res://main.tscn"
+run/low_processor_mode=true
+config/icon="res://assets/app_icon.png"
+config/windows_native_icon="res://assets/app_icon.ico"
+
+[display]
+
+window/size/width=350
+window/size/height=250
 
 [rendering]
 

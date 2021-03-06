@@ -1,3 +1,103 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://main.gd" type="Script" id=1]
+[ext_resource path="res://PropertiesPanel.tscn" type="PackedScene" id=2]
 
 [node name="main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="CurrentPath" type="Label" parent="."]
+margin_left = 27.0
+margin_top = 9.0
+margin_right = 310.0
+margin_bottom = 39.0
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PropertiesButton" type="Button" parent="."]
+margin_left = 253.0
+margin_top = 44.0
+margin_right = 331.0
+margin_bottom = 76.0
+toggle_mode = true
+text = "Properties"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="Controls"]
+margin_left = 11.0
+margin_top = 106.0
+margin_right = 124.0
+margin_bottom = 157.0
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StopButton" type="Button" parent="Controls"]
+margin_left = 10.0
+margin_top = 174.0
+margin_right = 123.0
+margin_bottom = 225.0
+text = "Kill"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResetButton" type="Button" parent="Controls"]
+margin_left = 153.0
+margin_top = 104.0
+margin_right = 334.0
+margin_bottom = 157.0
+text = "Reset / Start without world"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaxMemorySlider" type="HSlider" parent="Controls"]
+margin_left = 159.0
+margin_top = 194.0
+margin_right = 325.0
+margin_bottom = 217.0
+min_value = 1.0
+max_value = 8.0
+value = 4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MemoryLabel" type="Label" parent="Controls"]
+margin_left = 163.0
+margin_top = 172.0
+margin_right = 311.0
+margin_bottom = 195.0
+text = "Max Memory (GB): 4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SeedLineEdit" type="LineEdit" parent="Controls"]
+visible = false
+margin_right = 58.0
+margin_bottom = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PropertiesPanel" parent="." instance=ExtResource( 2 )]
+visible = false
+[connection signal="toggled" from="PropertiesButton" to="." method="_on_PropertiesButton_toggled"]
+[connection signal="pressed" from="Controls/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="Controls/StopButton" to="." method="_on_StopButton_pressed"]
+[connection signal="pressed" from="Controls/ResetButton" to="." method="_on_ResetButton_pressed"]
+[connection signal="value_changed" from="Controls/MaxMemorySlider" to="." method="_on_MaxMemorySlider_value_changed"]
